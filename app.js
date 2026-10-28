@@ -113,3 +113,44 @@ if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigat
 
   <p id="product-message" role="status"></p>
 </section>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("product-form");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const product = {
+      id: Date.now(),
+      name: document.getElementById("new-name").value.trim(),
+      price: Number(document.getElementById("new-price").value),
+      old: Number(document.getElementById("new-old-price").value) || 0,
+      category: document.getElementById("new-category").value,
+      image: document.getElementById("new-image").value.trim()
+    };
+
+    if (!product.name || product.price <= 0) {
+      alert("Product name aur sahi price bhariye.");
+      return;
+    }
+
+    try {
+      const saved = JSON.parse(
+        localStorage.getItem("commerceMartProducts") || "[]"
+      );
+
+      saved.push(product);
+      localStorage.setItem(
+        "commerceMartProducts",
+        JSON.stringify(saved)
+      );
+
+      document.getElementById("product-message").textContent =
+        "Product is browser mein save ho gaya.";
+
+      form.reset();
+    } catch (error) {
+      alert("Product save nahi hua. Browser storage check karein.");
+    }
+  });
+});
