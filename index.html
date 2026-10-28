@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f5b">
+  <meta name="description" content="Commerce Mart — Shop more, save more. Browse products and order on WhatsApp.">
+  <title>Commerce Mart | Shop More, Save More</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Commerce Mart home">
+      <span class="brand-icon">🛒</span>
+      <span><strong>Commerce Mart</strong><small data-en="Shop More • Save More" data-hi="ज़्यादा खरीदें • ज़्यादा बचाएँ">Shop More • Save More</small></span>
+    </a>
+    <div class="top-actions">
+      <button id="langBtn" class="btn btn-light" type="button">हिंदी</button>
+      <button id="cartJump" class="cart-button" type="button">🛍️ <span data-en="Cart" data-hi="कार्ट">Cart</span> <b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow" data-en="WELCOME TO YOUR EVERYDAY STORE" data-hi="आपकी रोज़मर्रा की ऑनलाइन दुकान">WELCOME TO YOUR EVERYDAY STORE</span>
+        <h1 data-en="Good products. Great prices." data-hi="अच्छे प्रोडक्ट। शानदार कीमतें।">Good products. Great prices.</h1>
+        <p data-en="Explore fashion, electronics, home essentials and more — all in one place." data-hi="फैशन, इलेक्ट्रॉनिक्स, घर का सामान और बहुत कुछ — सब एक ही जगह।">Explore fashion, electronics, home essentials and more — all in one place.</p>
+        <a href="#products" class="btn btn-primary" data-en="Shop products →" data-hi="प्रोडक्ट देखें →">Shop products →</a>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span>🎧</span><span>👟</span><span>📱</span><span>🎒</span><div class="sale-bubble">DEALS<br><strong>FOR YOU</strong></div></div>
+    </section>
+
+    <section class="search-row" aria-label="Search products">
+      <label class="searchbox"><span>🔎</span><input id="searchInput" type="search" placeholder="Search products / प्रोडक्ट खोजें" aria-label="Search products"></label>
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="all">All categories / सभी कैटेगरी</option>
+      </select>
+    </section>
+
+    <section class="section-head">
+      <div><p class="eyebrow" data-en="HANDPICKED FOR YOU" data-hi="आपके लिए चुने गए">HANDPICKED FOR YOU</p><h2 data-en="Shop by category" data-hi="कैटेगरी के अनुसार खरीदें">Shop by category</h2></div>
+    </section>
+    <div id="categories" class="category-grid"></div>
+
+    <section id="products" class="section-head product-heading">
+      <div><p class="eyebrow" data-en="FRESH FINDS" data-hi="नए प्रोडक्ट">FRESH FINDS</p><h2 data-en="Popular products" data-hi="लोकप्रिय प्रोडक्ट">Popular products</h2></div>
+      <span id="resultCount" class="muted"></span>
+    </section>
+    <div id="productGrid" class="product-grid"></div>
+
+    <section id="cart" class="cart-panel">
+      <div class="section-head"><div><p class="eyebrow" data-en="READY TO ORDER?" data-hi="ऑर्डर करने के लिए तैयार?">READY TO ORDER?</p><h2 data-en="Your cart" data-hi="आपका कार्ट">Your cart</h2></div></div>
+      <div id="cartItems"><p class="muted" data-en="Your cart is empty. Add a product to get started." data-hi="आपका कार्ट खाली है। शुरू करने के लिए कोई प्रोडक्ट जोड़ें।">Your cart is empty. Add a product to get started.</p></div>
+      <div class="cart-bottom"><strong><span data-en="Estimated total" data-hi="अनुमानित कुल">Estimated total</span>: <span id="cartTotal">₹0</span></strong><button id="whatsappOrder" class="btn btn-whatsapp" type="button">☘ <span data-en="Order on WhatsApp" data-hi="WhatsApp पर ऑर्डर करें">Order on WhatsApp</span></button></div>
+      <p class="tiny muted" data-en="Demo store: prices and products are examples. Confirm stock, delivery and final price with the seller." data-hi="डेमो स्टोर: कीमतें और प्रोडक्ट उदाहरण हैं। स्टॉक, डिलीवरी और अंतिम कीमत विक्रेता से पक्का करें।">Demo store: prices and products are examples. Confirm stock, delivery and final price with the seller.</p>
+    </section>
+
+    <section class="trust-row">
+      <div><span>🚚</span><strong data-en="Delivery options" data-hi="डिलीवरी विकल्प">Delivery options</strong><small data-en="Confirm at checkout" data-hi="ऑर्डर पर पुष्टि करें">Confirm at checkout</small></div>
+      <div><span>💬</span><strong data-en="WhatsApp support" data-hi="WhatsApp सहायता">WhatsApp support</strong><small data-en="Easy order enquiries" data-hi="आसान ऑर्डर पूछताछ">Easy order enquiries</small></div>
+      <div><span>🏷️</span><strong data-en="Everyday deals" data-hi="रोज़ाना ऑफर">Everyday deals</strong><small data-en="Great-value picks" data-hi="किफायती विकल्प">Great-value picks</small></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-icon">🛒</span><strong>Commerce Mart</strong></div>
+    <p data-en="Shop more • Save more • Be happy" data-hi="ज़्यादा खरीदें • ज़्यादा बचाएँ • खुश रहें">Shop more • Save more • Be happy</p>
+    <div class="footer-links"><a href="#products" data-en="Products" data-hi="प्रोडक्ट">Products</a><a href="#cart" data-en="Cart" data-hi="कार्ट">Cart</a><a id="contactLink" href="#" data-en="Contact on WhatsApp" data-hi="WhatsApp पर संपर्क करें">Contact on WhatsApp</a></div>
+    <small>© <span id="year"></span> Commerce Mart. <span data-en="Demo storefront" data-hi="डेमो स्टोर">Demo storefront</span>.</small>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

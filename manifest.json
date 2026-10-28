@@ -1,0 +1,13 @@
+{
+  "name": "Commerce Mart",
+  "short_name": "Commerce Mart",
+  "description": "Shop more, save more — bilingual shopping catalogue",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7faf8",
+  "theme_color": "#087f5b",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
