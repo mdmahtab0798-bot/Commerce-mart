@@ -64,7 +64,7 @@ function orderWhatsApp(){
  const total=entries.reduce((s,[id,q])=>s+products.find(p=>p.id===Number(id)).price*q,0);
  const msg=`Hello Commerce Mart! I want to place an order / मैं ऑर्डर करना चाहता/चाहती हूँ:\n\n${lines.join("\n")}\n\nEstimated total / अनुमानित कुल: ${money(total)}\n\nName / नाम:\nAddress / पता:\nPIN code / पिन कोड:\nPlease confirm stock, delivery charges and final price. / कृपया स्टॉक, डिलीवरी चार्ज और अंतिम कीमत की पुष्टि करें।`;
  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
-
+}
 /* Add Product form */
 const productGrid = document.querySelector("#productGrid");
 
