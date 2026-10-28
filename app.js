@@ -1,5 +1,5 @@
 // Commerce Mart demo storefront. Replace the WhatsApp number below with your business number.
-const WHATSAPP_NUMBER = "91,8709228064"; // Example format: 919876543210 (country code, no + or spaces)
+const WHATSAPP_NUMBER = "91+,8709228064"; // Example format: 919876543210 (country code, no + or spaces)
 const products = [
  {id:1,name:"Everyday Sneakers",hi:"रोज़ाना पहनने वाले जूते",category:"Fashion",hiCat:"फैशन",emoji:"👟",price:799,old:999,desc:"Comfortable everyday footwear",hiDesc:"आरामदायक रोज़ाना फुटवियर",tag:"Popular"},
  {id:2,name:"Wireless Headphones",hi:"वायरलेस हेडफोन",category:"Electronics",hiCat:"इलेक्ट्रॉनिक्स",emoji:"🎧",price:1299,old:1799,desc:"Music and calls on the go",hiDesc:"म्यूज़िक और कॉल के लिए",tag:"Deal"},
