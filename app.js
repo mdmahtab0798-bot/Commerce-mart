@@ -71,3 +71,45 @@ $("#contactLink").addEventListener("click",e=>{e.preventDefault();orderWhatsApp(
 $("#year").textContent=new Date().getFullYear();
 renderCategories();renderProducts();renderCart();
 if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("./sw.js").catch(()=>{});
+<section id="product-manager" style="padding:20px;max-width:500px;margin:auto">
+  <h2>➕ Add New Product</h2>
+
+  <form id="product-form">
+    <label>Product Name</label>
+    <input id="new-name" required
+      placeholder="जैसे Wireless Headphones"
+      style="display:block;width:100%;padding:12px;margin:8px 0">
+
+    <label>Price (₹)</label>
+    <input id="new-price" type="number" min="1" required
+      placeholder="799"
+      style="display:block;width:100%;padding:12px;margin:8px 0">
+
+    <label>Old Price (₹), optional</label>
+    <input id="new-old-price" type="number" min="0"
+      placeholder="999"
+      style="display:block;width:100%;padding:12px;margin:8px 0">
+
+    <label>Category</label>
+    <select id="new-category"
+      style="display:block;width:100%;padding:12px;margin:8px 0">
+      <option>Electronics</option>
+      <option>Fashion</option>
+      <option>Home</option>
+      <option>Beauty</option>
+      <option>Other</option>
+    </select>
+
+    <label>Product Photo URL (optional)</label>
+    <input id="new-image" type="url"
+      placeholder="https://example.com/photo.jpg"
+      style="display:block;width:100%;padding:12px;margin:8px 0">
+
+    <button type="submit"
+      style="padding:12px 20px;margin-top:12px">
+      Add Product
+    </button>
+  </form>
+
+  <p id="product-message" role="status"></p>
+</section>
