@@ -1,6 +1,6 @@
 // Commerce Mart demo storefront. Replace the WhatsApp number below with your business number.
 const WHATSAPP_NUMBER = "918709228064"; // Example format: 919876543210 (country code, no + or spaces)
-const products = [
+let products = [
  {id:1,name:"Everyday Sneakers",hi:"रोज़ाना पहनने वाले जूते",category:"Fashion",hiCat:"फैशन",emoji:"👟",price:799,old:999,desc:"Comfortable everyday footwear",hiDesc:"आरामदायक रोज़ाना फुटवियर",tag:"Popular"},
  {id:2,name:"Wireless Headphones",hi:"वायरलेस हेडफोन",category:"Electronics",hiCat:"इलेक्ट्रॉनिक्स",emoji:"🎧",price:1299,old:1799,desc:"Music and calls on the go",hiDesc:"म्यूज़िक और कॉल के लिए",tag:"Deal"},
  {id:3,name:"Smartphone Stand",hi:"मोबाइल स्टैंड",category:"Electronics",hiCat:"इलेक्ट्रॉनिक्स",emoji:"📱",price:249,old:349,desc:"Desk-friendly adjustable stand",hiDesc:"टेबल के लिए एडजस्टेबल स्टैंड",tag:"Value"},
@@ -13,7 +13,15 @@ const products = [
  {id:10,name:"Plush Teddy",hi:"सॉफ्ट टॉय टेडी",category:"Toys",hiCat:"खिलौने",emoji:"🧸",price:349,old:449,desc:"A cute gift for someone special",hiDesc:"किसी खास के लिए प्यारा उपहार",tag:"Gift"},
  {id:11,name:"Everyday Watch",hi:"रोज़ाना की घड़ी",category:"Fashion",hiCat:"फैशन",emoji:"⌚",price:899,old:1199,desc:"Simple style for everyday wear",hiDesc:"रोज़ाना पहनने के लिए सरल स्टाइल",tag:"New"},
  {id:12,name:"Coffee Mug Set",hi:"कॉफी मग सेट",category:"Home",hiCat:"घर का सामान",emoji:"☕",price:299,old:399,desc:"A cheerful set for your kitchen",hiDesc:"आपकी किचन के लिए सुंदर सेट",tag:"Deal"}
-];
+// Load products added from this browser
+try {
+  const savedProducts = JSON.parse(
+    localStorage.getItem("commerceMartProducts") || "[]"
+  );
+  products.push(...savedProducts);
+} catch (e) {
+  console.log("Saved products could not be loaded");
+ }];
 const categories = [
  {id:"all",en:"All products",hi:"सभी प्रोडक्ट",emoji:"✨"},
  {id:"Fashion",en:"Fashion",hi:"फैशन",emoji:"👟"},
