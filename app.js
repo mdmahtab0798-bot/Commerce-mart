@@ -64,6 +64,89 @@ function orderWhatsApp(){
  const total=entries.reduce((s,[id,q])=>s+products.find(p=>p.id===Number(id)).price*q,0);
  const msg=`Hello Commerce Mart! I want to place an order / मैं ऑर्डर करना चाहता/चाहती हूँ:\n\n${lines.join("\n")}\n\nEstimated total / अनुमानित कुल: ${money(total)}\n\nName / नाम:\nAddress / पता:\nPIN code / पिन कोड:\nPlease confirm stock, delivery charges and final price. / कृपया स्टॉक, डिलीवरी चार्ज और अंतिम कीमत की पुष्टि करें।`;
  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+
+/* Add Product form */
+const productGrid = document.querySelector("#productGrid");
+
+if (productGrid && !document.querySelector("#quickAddProduct")) {
+  productGrid.insertAdjacentHTML("beforebegin", `
+    <section id="quickAddProduct"
+      style="padding:16px;margin:16px 0;border:1px solid #ddd;border-radius:12px">
+      <h2>➕ Add Product</h2>
+      <form id="quickProductForm">
+        <input id="qpName" required placeholder="Product name"
+          style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+        <input id="qpPrice" type="number" min="1" required
+          placeholder="Selling price ₹"
+          style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+        <input id="qpOld" type="number" min="0"
+          placeholder="Old price ₹ (optional)"
+          style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+        <select id="qpCategory"
+          style="width:100%;padding:12px;margin:6px 0;box-sizing:border-box">
+          <option value="Fashion">Fashion</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Home">Home</option>
+          <option value="Beauty">Beauty</option>
+          <option value="Sports">Sports</option>
+          <option value="Books">Books</option>
+          <option value="Toys">Toys & Games</option>
+        </select>
+        <button type="submit" style="padding:12px 20px">
+          Save Product
+        </button>
+        <p id="qpMessage" role="status"></p>
+      </form>
+    </section>
+  `);
+
+  document.querySelector("#quickProductForm")
+    .addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const product = {
+        id: Date.now(),
+        name: document.querySelector("#qpName").value.trim(),
+        hi: document.querySelector("#qpName").value.trim(),
+        category: document.querySelector("#qpCategory").value,
+        hiCat: document.querySelector("#qpCategory").value,
+        emoji: "🛍️",
+        price: Number(document.querySelector("#qpPrice").value),
+        old: Number(document.querySelector("#qpOld").value) || 0,
+        desc: "New product",
+        hiDesc: "नया प्रोडक्ट",
+        tag: "New"
+      };
+
+      if (!product.name || product.price <= 0) {
+        document.querySelector("#qpMessage").textContent =
+          "Please enter a valid name and price.";
+        return;
+      }
+
+      try {
+        const saved = JSON.parse(
+          localStorage.getItem("commerceMartProducts") || "[]"
+        );
+        saved.push(product);
+        localStorage.setItem(
+          "commerceMartProducts",
+          JSON.stringify(saved)
+        );
+
+        products.push(product);
+        renderCategories();
+        renderProducts();
+
+        document.querySelector("#qpMessage").textContent =
+          "Product added successfully!";
+        this.reset();
+      } catch (error) {
+        document.querySelector("#qpMessage").textContent =
+          "Could not save product. Please check browser storage.";
+      }
+    });
+}
 }
 document.addEventListener("click",e=>{
  const add=e.target.closest("[data-add]"); if(add){addToCart(Number(add.dataset.add));return}
